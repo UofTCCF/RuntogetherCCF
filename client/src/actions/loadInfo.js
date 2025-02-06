@@ -9,6 +9,7 @@ export const getAllUsers = (page) => {
 
   const request = new Request(url, {
     method: "get",
+    mode: "cors",
     headers: {
       Accept: "application/json, text/plain, */*",
       "Content-Type": "application/json",
