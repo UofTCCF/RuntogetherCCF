@@ -28,15 +28,21 @@ class Nominations extends React.Component {
   }
 
   render() {
-    const handleSubmit = (nominationText) => {
+    const handleSubmit = (nominationText, nominationType) => {
       if (this.state.user.name === undefined) {
         errorToast("Please log in to submit a nomination");
       } 
       else if (this.state.user.id === this.state.nominee.id) {
         errorToast("You cannot nominate yourself");
       } 
+      else if (this.state.nominationType === 0) {
+        errorToast("Please select a nomination type")
+      }
+      else if (this.state.nominationType === 3 && this.state.checked === false) {
+        errorToast("You must check the box to submit")
+      }
       else {
-        uploadNomination(this.state.nominee, this.state.user, nominationText);
+        uploadNomination(this.state.nominee, this.state.user, nominationText, nominationType);
         this.setState({ submitted: true });
       }
     };
@@ -61,6 +67,11 @@ class Nominations extends React.Component {
         >
           Upload Nominations for {this.state.nominee.name}
         </Typography>
+        {this.state.user.name === undefined ? (
+          <GoogleLoginButton parent={this} />
+        ) : (
+          <></>
+        )}
         {this.state.submitted ? (
           <SubmittedNomination nominee={this.state.nominee} />
         ) : (
@@ -69,11 +80,6 @@ class Nominations extends React.Component {
             nominee={this.state.nominee}
             previousNomination={previousNomination}
           />
-        )}
-        {this.state.user.name === undefined ? (
-          <GoogleLoginButton parent={this} />
-        ) : (
-          <></>
         )}
         </ModuleWrapper>
     );

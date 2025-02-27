@@ -3,6 +3,8 @@ import React from "react";
 import GenericButton from "../genericButton/genericButton";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import SimpleListMenu from "../selectNominationType/selectNominationType";
+import Checkbox from "@mui/material/Checkbox";
 
 class UploadNomination extends React.Component {
     constructor(props) {
@@ -48,34 +50,70 @@ class UploadNomination extends React.Component {
             Type or paste your nomination in the box below and click "Submit" to
             upload your nomination.
             </Typography>
+            <SimpleListMenu
+            options={["Please select a nomination type", "External nomination", 
+            "Internal long nomination",
+            "Internal short statement"]}
+            prompt="What nomination are you submitting?"
+            setSelectedIndex={this.props.setSelectedIndex}
+            selectedIndex={this.props.selectedIndex}
+            />
+            <Typography color="textPrimary" paddingBottom="1em">
+            Please refer to elections handbook to know what these nomination types are.
+            </Typography>
+            {this.props.selectedIndex === 3 ? 
+            <Box display="flex" alignItems="center">
+                <Checkbox 
+                    style={{ color: 'black' }} 
+                    checked={this.props.checked}
+                    onChange={() => {this.props.setChecked(!this.props.checked)}}
+                />
+                <Typography color="textPrimary">
+                    I second this candidate being nominated <span style={{ color: 'red' }}>*</span>
+                </Typography>
+            </Box>
+            :
             <ReactQuill 
                 theme="snow" 
                 value={this.state.nominationText} 
                 onChange={this.handleNominationTextChange} 
                 placeholder={"Enter Nomination Here"}
                 style={{ 
-                    marginBottom: "1em",
-                    backgroundColor: "#e4e4e4",
-                    border: "1px solid #000",
-                    width: "100%",
-                    maxHeight: "400px",
-                    overflowY: "auto",
-                }}
-            />
+                marginBottom: "1em",
+                backgroundColor: "#e4e4e4",
+                border: "1px solid #000",
+                width: "100%",
+                maxHeight: "400px",
+                overflowY: "auto",
+            }}
+            />}
             <Box width="150px" marginLeft="auto" marginRight="0" marginTop="0.8em">
-            <GenericButton 
+                <GenericButton 
                 color="action"
                 onClick={() => {
-                    console.log(this.state.sanitizedNomination);
-                this.props.handleSubmit(this.state.sanitizedNomination);
-                }}
-            >
-            Submit
-            </GenericButton>
+                console.log(this.state.sanitizedNomination);
+                this.props.handleSubmit(this.state.sanitizedNomination, this.props.selectedIndex, this.props.checked);
+                }}>
+                    Submit
+                </GenericButton>
             </Box>
         </>
         );
     }
 }
 
-export default UploadNomination;
+function withIndex(Component) {
+    return function WrappedComponent(props) {
+      const [selectedIndex, setSelectedIndex] = React.useState(0);
+      const [checked, setChecked] = React.useState(false);
+      return <Component {...props} 
+            selectedIndex={selectedIndex} 
+            setSelectedIndex={setSelectedIndex} 
+            checked={checked}
+            setChecked={setChecked}
+        />;
+    }
+  }
+
+
+export default withIndex(UploadNomination);
