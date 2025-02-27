@@ -11,7 +11,7 @@ const ElectionSection = ({ candidates }) => {
     const isThinScreen = useMediaQuery("(max-width: 450px)");
     console.log(isThinScreen);
     return (
-        <ModuleWrapper backgroundColor="primary.main">
+        <ModuleWrapper backgroundColor="secondary.main">
             <Typography variant="h2" color="textPrimary" textAlign="left">
                 {ELECTIONS_HEADER_TEXT}
             </Typography>
