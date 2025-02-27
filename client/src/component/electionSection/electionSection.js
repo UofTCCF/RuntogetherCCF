@@ -8,7 +8,7 @@ import ModuleWrapper from '../moduleWrapper/moduleWrapper';
 
 const ElectionSection = ({ candidates }) => {
     return (
-        <ModuleWrapper backgroundColor="secondary.main">
+        <ModuleWrapper backgroundColor="primary.main">
             <Typography variant="h2" color="textPrimary" textAlign="left">
                 {ELECTIONS_HEADER_TEXT}
             </Typography>

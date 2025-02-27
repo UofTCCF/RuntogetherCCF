@@ -63,7 +63,7 @@ const WelcomeCard = ({ parent, user }) => {
 
   return (
     <>
-        <ModuleWrapper backgroundColor="primary.main">
+        <ModuleWrapper backgroundColor="secondary.main">
         <Box className={loggedIn ? "welcomeCardContainer welcomeCardContainerBar" : "welcomeCardContainer"}>
             <Box 
                 display="flex"
