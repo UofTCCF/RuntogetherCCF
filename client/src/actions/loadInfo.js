@@ -15,7 +15,6 @@ export const getAllUsers = (page) => {
       "Content-Type": "application/json",
     },
   });
-
   fetch(request)
     .then((res) => {
       if (res.status === 200) {
@@ -27,6 +26,7 @@ export const getAllUsers = (page) => {
     .then((res) => {
       if (typeof res === "object") {
         page.setState({
+          loadingData: false,
           candidates: res,
         });
         return;

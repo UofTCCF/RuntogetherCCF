@@ -6,7 +6,7 @@ import { capitalize } from "lodash";
 import { STATUS } from "../../constants";
 import ModuleWrapper from '../moduleWrapper/moduleWrapper';
 
-const ElectionSection = ({ candidates }) => {
+const ElectionSection = ({ candidates, loading }) => {
     return (
         <ModuleWrapper backgroundColor="secondary.main">
             <Typography variant="h2" color="textPrimary" textAlign="left">
@@ -22,16 +22,19 @@ const ElectionSection = ({ candidates }) => {
                 title={capitalize(STATUS.CONSIDERING)}
                 positions={CONSIDERING_POSITIONS}
                 candidates={candidates}
+                loading={loading}
                 />
                 <PersonList
                 title="Committee"
                 positions={COMMITTEE_POSITIONS}
                 candidates={candidates}
+                loading={loading}
                 />
                 <PersonList
                 title="IGs & Ministries"
                 positions={MINISTRY_POSITIONS}
                 candidates={candidates}
+                loading={loading}
                 />
             </Box>
         </ModuleWrapper>

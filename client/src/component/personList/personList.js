@@ -5,8 +5,9 @@ import "./personList.css";
 import PersonCard from "../personCard/personCard";
 import { STATUS } from "../../constants";
 import { capitalize } from "lodash";
+import Skeleton from "@mui/material/Skeleton";
 
-const PersonList = ({ title, positions, candidates }) => {
+const PersonList = ({ title, positions, candidates, loading }) => {
   const getColumnContents = () => {
     if (title === capitalize(STATUS.CONSIDERING)) {
       return Object.values(positions).map((pos) => (
@@ -40,13 +41,25 @@ const PersonList = ({ title, positions, candidates }) => {
     ));
   };
 
+  const customSkeleton = () => {
+    let rows = []
+    for (let i = 0; i < 5; i++) {
+        rows.push(
+        <Box padding={1} key={i}>
+            <Skeleton variant="rectangle" height={75}/>
+        </Box>
+    )
+    }
+    return rows
+  }
+
   return (
     <Box className="personList">
         <Typography variant="h4" color="textPrimary" textAlign="center">
           {title}
         </Typography>
         <Box key={title} marginBottom="0.8em" className="personListContent">
-          {getColumnContents()}
+          {loading ? customSkeleton() : getColumnContents()}
         </Box>
     </Box>
   );
