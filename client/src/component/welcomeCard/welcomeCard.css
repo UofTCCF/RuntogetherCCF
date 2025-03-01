@@ -24,6 +24,9 @@
 
 
 @media (max-width: 600px) {
+    .welcomeCardWrapper {
+        margin-top: 2vh; 
+    }
     .welcomeCardContainer {
         flex-direction: column;
         align-items: flex-start;
