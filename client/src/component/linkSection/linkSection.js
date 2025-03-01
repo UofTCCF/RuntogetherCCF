@@ -24,7 +24,7 @@ export const GeneralLink = ({ label, link, size }) => {
 
 const LinkSection = () => {
   return (
-    <ModuleWrapper backgroundColor="secondary.main">
+    <ModuleWrapper backgroundColor="primary.main">
         <Typography variant="h2" color="textPrimary" textAlign="center">
             Resources
         </Typography>
