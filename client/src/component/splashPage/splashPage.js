@@ -10,14 +10,14 @@ const SplashPage = () => {
         <>
             {!isSmallScreen && (
             <img 
-                src={require("../../assets/group-winter-retreat.png")} 
+                src={require("../../assets/WR2025.png")} 
                 alt="background" 
                 style={{
                     position: "fixed", 
                     top: "0", 
                     left: "0", 
                     width: "100%", 
-                    height: "80vh", 
+                    height: "100%", 
                     zIndex: "-1",
                     objectFit: "cover",
                     objectPosition: "center",

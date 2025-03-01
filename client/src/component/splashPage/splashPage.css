@@ -11,6 +11,16 @@
      box-sizing: border-box; 
 }
 
+/* Have to change colour manually, not tied to theme */
+.title::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 6px;
+    background-color: #c0c0c0;
+    margin: 0.2em 0 0.1em 0;
+}
+
 .title {
     word-break: break-word;
 }
