@@ -1,4 +1,6 @@
 .splashPage {
+    height: 70vh;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -25,22 +27,6 @@
     word-break: break-word;
 }
 
-@media screen and (min-width: 600px){
-    .splashPage {
-        height: 70vh;
-        min-height: 500px;
-    }
-    /* Have to change colour manually, not tied to theme */
-    .title::after {
-        content: '';
-        display: block;
-        width: 50%;
-        height: 6px;
-        background-color: #C0C0C0;
-        margin: 0.2em 0 0.1em 0;
-    }
-}
-
 @media screen and (max-width: 600px){
     .logoTitle {
         display: flex;
@@ -54,6 +40,9 @@
     }
     .splashPage {
         padding: 1em;
+    }
+    .title::after {
+        background-color: #000000;
     }
 }
 
