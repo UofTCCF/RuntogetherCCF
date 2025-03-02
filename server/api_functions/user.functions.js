@@ -94,7 +94,7 @@ const uploadNominationLink = async (id, nominationLink) => {
   return user;
 };
 
-const updateNominations = async (id, nominator, nomination, nominatorID) => {
+const updateNominations = async (id, nominator, nomination, nominatorID, nominationType) => {
   const user = await User.findOne({ id: id });
 
   // Checks if a user exists
@@ -106,6 +106,7 @@ const updateNominations = async (id, nominator, nomination, nominatorID) => {
   for (let i = 0; i < user.nominations.length; i++) {
     if (user.nominations[i].nominatorID === nominatorID) {
       user.nominations[i].nomination = nomination;
+      user.nominations[i].nominationType = nominationType;
       user.save();
       return user;
     }
@@ -116,7 +117,9 @@ const updateNominations = async (id, nominator, nomination, nominatorID) => {
     nominator: nominator,
     nomination: nomination,
     nominatorID: nominatorID,
+    nominationType: nominationType,
   };
+  console.log(newNomination)
 
   user.nominations.push(newNomination);
   user.save();

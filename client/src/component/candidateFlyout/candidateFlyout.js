@@ -12,6 +12,7 @@ import { CCF_THEME } from "../../actions/theme";
 import { capitalize } from "lodash";
 import { GeneralLink } from "../linkSection/linkSection";
 import "./candidateFlyout.css";
+import { NOMINATION_TYPES } from "../../constants";
 
 const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
   const {
@@ -30,6 +31,12 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
   const largeScreen = useMediaQuery(CCF_THEME.breakpoints.up("md"));
   const responsiveWidth = largeScreen ? "800px" : "100%";
   const hasNominators = nominations !== undefined;
+  const externalNominators = hasNominators ? nominations.filter(
+    (nom) => nom.nominationType === NOMINATION_TYPES[0]) : undefined
+  const internalNominators = hasNominators ? nominations.filter(
+    (nom) => nom.nominationType === NOMINATION_TYPES[1]) : undefined
+  const internalShortNominators = hasNominators ? nominations.filter(
+    (nom) => nom.nominationType === NOMINATION_TYPES[1]) : undefined
   const schoolInfo =
     year && program ? (
       <>
@@ -99,11 +106,12 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
             </>
         }
         <Divider sx={{ bgcolor: "secondary.light", margin: "1em 0" }} />
-        <Typography variant="h2" fontWeight="600" marginBottom="0.5em">
-          Nominations
+        <Typography variant="h2" fontWeight="600" 
+            marginBottom="0.5em" marginTop="0.5em">
+          {NOMINATION_TYPES[0]}
         </Typography>
-        {hasNominators &&
-          nominations.map((nom) => (
+        {externalNominators !== undefined && externalNominators.length !== 0 ?
+          externalNominators.map((nom) => (
             <Box
               key={nom.nominator}
               padding="0.8rem 0rem"
@@ -117,7 +125,59 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
                 </Typography>
                 </Box>
             </Box>
-          ))}
+          )) : 
+          <Typography variant="h3">
+            Not completed or opted out
+          </Typography>
+        }
+        <Typography variant="h2" fontWeight="600" 
+            marginBottom="0.5em" marginTop="0.5em">
+          {NOMINATION_TYPES[1]}s
+        </Typography>
+        {internalNominators !== undefined && internalNominators.length !== 0 ?
+            internalNominators.map((nom) => (
+            <Box
+              key={nom.nominator}
+              padding="0.8rem 0rem"
+              margin="0 0 1rem 0"
+            >
+                <Typography variant="h3" paddingBottom="0.3rem"><strong>{nom.nominator}</strong></Typography>
+                <Box className="nominationBody">
+                <Typography 
+                    component="div" 
+                    dangerouslySetInnerHTML={{__html: nom.nomination}}>
+                </Typography>
+                </Box>
+            </Box>
+          )) :
+          <Typography variant="h3">
+            Not completed
+          </Typography>
+          }
+          <Typography variant="h2" fontWeight="600" 
+            marginBottom="0.5em" marginTop="0.5em">
+          {NOMINATION_TYPES[2]}
+        </Typography>
+        {internalShortNominators !== undefined && internalShortNominators.length !== 0 ?
+            internalShortNominators.map((nom) => (
+            <Box
+              key={nom.nominator}
+              padding="0.8rem 0rem"
+              margin="0 0 1rem 0"
+            >
+                <Typography variant="h3" paddingBottom="0.3rem"><strong>{nom.nominator}</strong></Typography>
+                <Box className="nominationBody">
+                <Typography 
+                    component="div" 
+                    dangerouslySetInnerHTML={{__html: nom.nomination}}>
+                </Typography>
+                </Box>
+            </Box>
+          )) :
+          <Typography variant="h3">
+            Not completed
+          </Typography>
+          }
       </Box>
     </Drawer>
   );

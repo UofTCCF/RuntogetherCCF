@@ -5,6 +5,7 @@ const nominationSchema = new Schema({
   nominator: { type: String, required: true },
   nomination: { type: String, required: true },
   nominatorID: { type: String, required: true },
+  nominationType: { type: String, required: true },
 });
 
 const userSchema = new Schema({

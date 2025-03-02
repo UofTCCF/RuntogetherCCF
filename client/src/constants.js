@@ -193,3 +193,13 @@ export const LINKS = [
     link: "https://www.utccf.com",
   },
 ];
+
+// Hard coded that the first is external, second in internal long 
+// and third is internal short
+export const NOMINATION_TYPES = [
+    "External Nomination",
+    "Internal Long Nomination",
+    "Internal Short Nomination"
+]
+
+export const NOMINATION_TYPES_DESCRIPTION = "Please refer to elections handbook to know what these nomination types are."

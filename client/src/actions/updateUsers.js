@@ -139,15 +139,15 @@ export const checkUserProfile = (
   }
 };
 
-export const uploadNomination = (nominee, user, nominationText) => {
+export const uploadNomination = (nominee, user, nominationText, nominationType) => {
   const url = `${API_HOST}/users/nomination/${nominee.id}`;
-
   const request = new Request(url, {
     method: "post",
     body: JSON.stringify({
       nomination: nominationText,
       nominator: user.name,
       nominatorID: user.id,
+      nominationType: nominationType,
     }),
     headers: {
       Accept: "application/json, text/plain, */*",
@@ -175,6 +175,10 @@ export const uploadNomination = (nominee, user, nominationText) => {
       console.log(err);
     });
 };
+
+export const deleteNomination = (nominee, user, nominationType) => {
+    //TODO
+}
 
 export const updateGeneralInfo = (
   user,
