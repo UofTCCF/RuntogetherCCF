@@ -37,7 +37,8 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
   const internalNominators = hasNominators ? nominations.filter(
     (nom) => nom.nominationType === NOMINATION_TYPES[1]) : undefined
   const internalShortNominators = hasNominators ? nominations.filter(
-    (nom) => nom.nominationType === NOMINATION_TYPES[1]) : undefined
+    (nom) => nom.nominationType === NOMINATION_TYPES[2]) : undefined
+  console.log(externalNominators)
   const schoolInfo =
     year && program ? (
       <>
