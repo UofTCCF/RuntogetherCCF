@@ -23,10 +23,12 @@ const ElectionInfoModal = ({
   position,
   visionName,
   visionLink,
+  reflectionQuestionsLink,
   setStatus,
   setPosition,
   setVisionName,
   setVisionLink,
+  setReflectionQuestionsLink,
   handleSubmit,
   handleBack,
 }) => {
@@ -122,6 +124,22 @@ const ElectionInfoModal = ({
         label="Link to vision"
         value={visionLink}
         onChange={(event) => setVisionLink(event.target.value)}
+      />
+      <TextField
+        variant="outlined"
+        color="secondary"
+        sx={{
+          marginBottom: "0.8rem",
+          "& .MuiInputBase-input": {
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          },
+        }}
+        size="small"
+        fullWidth
+        label="Link to reflection questions"
+        value={reflectionQuestionsLink}
+        onChange={(event) => setReflectionQuestionsLink(event.target.value)}
       />
       <Typography variant="h3" color="textPrimary" marginBottom="0.5rem">
         <strong>Nominations</strong>: {nominations.length}

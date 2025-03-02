@@ -9,6 +9,7 @@ const updateVisionAndPositions = (
   user,
   visionName,
   visionLink,
+  reflectionQuestionsLink,
   positions,
   status,
   page
@@ -20,6 +21,7 @@ const updateVisionAndPositions = (
     body: JSON.stringify({
       visionName: visionName,
       visionLink: visionLink,
+      reflectionQuestionsLink: reflectionQuestionsLink,
       positions: positions,
       status: status,
     }),
@@ -99,6 +101,7 @@ export const checkUserProfile = (
   status,
   visionName,
   visionLink,
+  reflectionQuestionsLink,
   page
 ) => {
   let ready = true;
@@ -126,12 +129,12 @@ export const checkUserProfile = (
     default:
       break;
   }
-
   if (ready) {
     updateVisionAndPositions(
       user,
       visionName,
       visionLink,
+      reflectionQuestionsLink,
       position,
       status,
       page

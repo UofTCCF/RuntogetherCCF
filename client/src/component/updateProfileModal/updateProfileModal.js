@@ -10,6 +10,7 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
   const [position, setPosition] = useState(person.positions);
   const [visionName, setVisionName] = useState(person.visionName);
   const [visionLink, setVisionLink] = useState(person.visionLink);
+  const [reflectionQuestionsLink, setReflectionQuestionsLink] = useState(person.reflectionQuestionsLink)
   const [yearOfStudy, setYearOfStudy] = useState(person.year);
   const [programName, setProgramName] = useState(person.program);
   const [churchName, setChurchName] = useState(person.church);
@@ -25,7 +26,7 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
   const responsiveHeight = largeScreen ? "500px" : "90%";
 
   const handleSubmit = () => {
-    checkUserProfile(person, position, status, visionName, visionLink, parent);
+    checkUserProfile(person, position, status, visionName, visionLink, reflectionQuestionsLink, parent);
     onClose();
   };
 
@@ -93,10 +94,12 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
               status={status}
               position={position}
               visionLink={visionLink}
+              reflectionQuestionsLink={reflectionQuestionsLink}
               visionName={visionName}
               setStatus={setStatus}
               setPosition={setPosition}
               setVisionLink={setVisionLink}
+              setReflectionQuestionsLink={setReflectionQuestionsLink}
               setVisionName={setVisionName}
               handleBack={handleBackClick}
               handleSubmit={handleSubmit}

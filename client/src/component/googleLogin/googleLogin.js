@@ -1,6 +1,7 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { login } from "../../actions/loadInfo";
 import { jwtDecode } from "jwt-decode";
+import GenericButton from "../genericButton/genericButton";
 
 
 const GoogleLoginButton = ({ parent }) => {
@@ -10,7 +11,7 @@ const GoogleLoginButton = ({ parent }) => {
             onError={(error) => { console.log(error); }}
             auto_select
             useOneTap
-          />
+        />
     )
 }
 

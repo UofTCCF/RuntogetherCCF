@@ -21,6 +21,7 @@ const userSchema = new Schema({
   nominations: { type: [nominationSchema], required: true, default: [] },
   visionName: { type: String, default: "" },
   visionLink: { type: String, default: "" },
+  reflectionQuestionsLink: { type: String, default: "" },
   nominationLink: { type: String },
   program: { type: String, default: "" },
   year: { type: String, default: "First" },
