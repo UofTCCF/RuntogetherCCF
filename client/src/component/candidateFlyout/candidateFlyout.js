@@ -20,6 +20,7 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
     positions,
     visionName,
     visionLink,
+    reflectionQuestionsLink,
     nominations,
     program,
     year,
@@ -104,6 +105,9 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
             </Typography>
             <GeneralLink label={visionName} link={visionLink} size="h3" />
             </>
+        }
+        {reflectionQuestionsLink && 
+            <GeneralLink label="Reflection Questions" link={reflectionQuestionsLink} size="h3" />
         }
         <Divider sx={{ bgcolor: "secondary.light", margin: "1em 0" }} />
         <Typography variant="h2" fontWeight="600" 

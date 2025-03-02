@@ -35,6 +35,7 @@ const updateVisionOrPosition = async (
   id,
   visionName,
   visionLink,
+  reflectionQuestionsLink,
   positions,
   status
 ) => {
@@ -47,6 +48,7 @@ const updateVisionOrPosition = async (
 
   user.visionName = visionName;
   user.visionLink = visionLink;
+  user.reflectionQuestionsLink = reflectionQuestionsLink;
   user.positions = positions;
   user.status = status;
 
