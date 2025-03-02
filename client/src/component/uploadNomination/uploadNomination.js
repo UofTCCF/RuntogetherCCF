@@ -5,6 +5,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import SimpleListMenu from "../selectNominationType/selectNominationType";
 import Checkbox from "@mui/material/Checkbox";
+import { NOMINATION_TYPES, NOMINATION_TYPES_DESCRIPTION } from "../../constants";
 
 class UploadNomination extends React.Component {
     constructor(props) {
@@ -42,6 +43,9 @@ class UploadNomination extends React.Component {
             nominationMatches: true,
         });
         }
+        const secondingText = `I second the nomination for 
+            ${this.props.nominee.name} for the position of 
+            ${this.props.nominee.positions[0]}`
         return (
         <>
             <Typography color="textPrimary" paddingBottom="1em">
@@ -51,15 +55,13 @@ class UploadNomination extends React.Component {
             upload your nomination.
             </Typography>
             <SimpleListMenu
-            options={["Please select a nomination type", "External nomination", 
-            "Internal long nomination",
-            "Internal short statement"]}
+            options={["Please select a nomination type", ...NOMINATION_TYPES]}
             prompt="What nomination are you submitting?"
             setSelectedIndex={this.props.setSelectedIndex}
             selectedIndex={this.props.selectedIndex}
             />
             <Typography color="textPrimary" paddingBottom="1em">
-            Please refer to elections handbook to know what these nomination types are.
+                {NOMINATION_TYPES_DESCRIPTION}
             </Typography>
             {this.props.selectedIndex === 3 ? 
             <Box display="flex" alignItems="center">
@@ -69,7 +71,8 @@ class UploadNomination extends React.Component {
                     onChange={() => {this.props.setChecked(!this.props.checked)}}
                 />
                 <Typography color="textPrimary">
-                    I second this candidate being nominated <span style={{ color: 'red' }}>*</span>
+                    {secondingText}
+                    <span style={{ color: 'red' }}>*</span>
                 </Typography>
             </Box>
             :
@@ -91,8 +94,10 @@ class UploadNomination extends React.Component {
                 <GenericButton 
                 color="action"
                 onClick={() => {
-                console.log(this.state.sanitizedNomination);
-                this.props.handleSubmit(this.state.sanitizedNomination, this.props.selectedIndex, this.props.checked);
+                this.props.handleSubmit(this.state.sanitizedNomination, 
+                    this.props.selectedIndex, 
+                    this.props.checked,
+                    secondingText);
                 }}>
                     Submit
                 </GenericButton>

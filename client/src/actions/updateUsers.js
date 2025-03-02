@@ -141,7 +141,6 @@ export const checkUserProfile = (
 
 export const uploadNomination = (nominee, user, nominationText, nominationType) => {
   const url = `${API_HOST}/users/nomination/${nominee.id}`;
-
   const request = new Request(url, {
     method: "post",
     body: JSON.stringify({
