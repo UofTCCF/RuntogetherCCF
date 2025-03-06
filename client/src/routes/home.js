@@ -20,7 +20,7 @@ class Home extends React.Component {
     componentDidMount() {
         getAllUsers(this);
         setTimeout(() => {
-            errorToast("Server warming up, please wait a minute")
+            errorToast("Server warming up, please wait a minute for data to be fetched.")
         }, 1000)
     }
 
