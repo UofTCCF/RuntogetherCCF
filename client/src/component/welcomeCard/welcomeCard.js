@@ -62,7 +62,7 @@ const WelcomeCard = ({ parent, user }) => {
     isDecided && getRequirementsStatus(user, positions[0]);
 
   return (
-    <>
+      <div className="welcomeCardWrapper">
         <ModuleWrapper backgroundColor="primary.main">
         <Box className={loggedIn ? "welcomeCardContainer welcomeCardContainerBar" : "welcomeCardContainer"}>
             <Box 
@@ -127,7 +127,7 @@ const WelcomeCard = ({ parent, user }) => {
           />
         </>
       ) : null}
-    </>
+    </div>
   );
 };
 

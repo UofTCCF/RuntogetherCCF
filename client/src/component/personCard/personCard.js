@@ -59,13 +59,13 @@ const PersonCard = ({ person }) => {
             src={picture}
             alt="profile pic"
             height="100%"
-            width="100%"
+            //width="100%"
             onError={handleImageError}
           /> : <img
             src={DEFAULT_PROFILE_PIC}
             alt="profile pic"
             height="100%"
-            width="100%"
+            //width="100%"
           />}
         </Box>
         <Box marginLeft="0.65em">

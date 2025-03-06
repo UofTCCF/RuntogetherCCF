@@ -2,7 +2,7 @@
   width: 400px;
 }
 
-.personListContent {
+.personListContentScroll {
     max-height: 500px;
     overflow-y: auto;
 }

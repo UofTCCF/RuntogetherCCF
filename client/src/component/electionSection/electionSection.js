@@ -5,8 +5,10 @@ import { CONSIDERING_POSITIONS, COMMITTEE_POSITIONS, MINISTRY_POSITIONS, ELECTIO
 import { capitalize } from "lodash";
 import { STATUS } from "../../constants";
 import ModuleWrapper from '../moduleWrapper/moduleWrapper';
+import {useMediaQuery} from "@mui/material";
 
 const ElectionSection = ({ candidates, loading }) => {
+    const isThinScreen = useMediaQuery("(max-width: 450px)");
     return (
         <ModuleWrapper backgroundColor="secondary.main">
             <Typography variant="h2" color="textPrimary" textAlign="left">
@@ -23,18 +25,21 @@ const ElectionSection = ({ candidates, loading }) => {
                 positions={CONSIDERING_POSITIONS}
                 candidates={candidates}
                 loading={loading}
+                fixedHeight={!isThinScreen}
                 />
                 <PersonList
                 title="Committee"
                 positions={COMMITTEE_POSITIONS}
                 candidates={candidates}
                 loading={loading}
+                fixedHeight={!isThinScreen}
                 />
                 <PersonList
                 title="IGs & Ministries"
                 positions={MINISTRY_POSITIONS}
                 candidates={candidates}
                 loading={loading}
+                fixedHeight={!isThinScreen}
                 />
             </Box>
         </ModuleWrapper>

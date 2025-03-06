@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "npm install && cd client && npm install && npm run build && cd ..",
-    "start-dev": "concurrently \"nodemon server\" \"cd client && npm start\"",
-    "start": "node server.js",
+    "start-dev": "concurrently \"nodemon server/server\" \"cd client && npm start\"",
+    "start": "node server/server.js",
     "heroku-postbuild": "cd client && npm install --legacy-peer-dps && npm run build"
   },
   "repository": {

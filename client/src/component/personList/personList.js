@@ -7,7 +7,7 @@ import { STATUS } from "../../constants";
 import { capitalize } from "lodash";
 import Skeleton from "@mui/material/Skeleton";
 
-const PersonList = ({ title, positions, candidates, loading }) => {
+const PersonList = ({ title, positions, candidates, fixedHeight, loading }) => {
   const getColumnContents = () => {
     if (title === capitalize(STATUS.CONSIDERING)) {
       return Object.values(positions).map((pos) => (
@@ -58,7 +58,7 @@ const PersonList = ({ title, positions, candidates, loading }) => {
         <Typography variant="h4" color="textPrimary" textAlign="center">
           {title}
         </Typography>
-        <Box key={title} marginBottom="0.8em" className="personListContent">
+        <Box key={title} marginBottom="0.8em" className={fixedHeight ? "personListContentScroll" : ""}>
           {loading ? customSkeleton() : getColumnContents()}
         </Box>
     </Box>
