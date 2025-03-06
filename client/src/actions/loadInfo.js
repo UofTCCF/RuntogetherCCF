@@ -26,7 +26,7 @@ export const getAllUsers = (page) => {
     .then((res) => {
       if (typeof res === "object") {
         page.setState({
-          loadingData: false,
+        //   loadingData: false,
           candidates: res,
         });
         return;

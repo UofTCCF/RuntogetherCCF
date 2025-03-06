@@ -1,5 +1,6 @@
 import React from "react";
 
+import { errorToast } from "../actions/toastify";
 import WelcomeCard from "../component/welcomeCard/welcomeCard";
 import LinkSection from "../component/linkSection/linkSection";
 import ElectionSection from "../component/electionSection/electionSection";
@@ -18,9 +19,12 @@ class Home extends React.Component {
 
     componentDidMount() {
         getAllUsers(this);
+        setTimeout(() => {
+            errorToast("Server warming up, please wait a minute")
+        }, 1000)
     }
+
   render() {
-    console.log(this.state.loadingData)
     return (
       <>
         <WelcomeCard parent={this} user={this.state.user} />
