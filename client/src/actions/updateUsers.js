@@ -9,6 +9,7 @@ const updateVisionAndPositions = (
   user,
   visionName,
   visionLink,
+  reflectionQuestionsLink,
   positions,
   status,
   page
@@ -20,6 +21,7 @@ const updateVisionAndPositions = (
     body: JSON.stringify({
       visionName: visionName,
       visionLink: visionLink,
+      reflectionQuestionsLink: reflectionQuestionsLink,
       positions: positions,
       status: status,
     }),
@@ -99,6 +101,7 @@ export const checkUserProfile = (
   status,
   visionName,
   visionLink,
+  reflectionQuestionsLink,
   page
 ) => {
   let ready = true;
@@ -126,12 +129,12 @@ export const checkUserProfile = (
     default:
       break;
   }
-
   if (ready) {
     updateVisionAndPositions(
       user,
       visionName,
       visionLink,
+      reflectionQuestionsLink,
       position,
       status,
       page
@@ -139,15 +142,15 @@ export const checkUserProfile = (
   }
 };
 
-export const uploadNomination = (nominee, user, nominationText) => {
+export const uploadNomination = (nominee, user, nominationText, nominationType) => {
   const url = `${API_HOST}/users/nomination/${nominee.id}`;
-
   const request = new Request(url, {
     method: "post",
     body: JSON.stringify({
       nomination: nominationText,
       nominator: user.name,
       nominatorID: user.id,
+      nominationType: nominationType,
     }),
     headers: {
       Accept: "application/json, text/plain, */*",
@@ -175,6 +178,10 @@ export const uploadNomination = (nominee, user, nominationText) => {
       console.log(err);
     });
 };
+
+export const deleteNomination = (nominee, user, nominationType) => {
+    //TODO
+}
 
 export const updateGeneralInfo = (
   user,

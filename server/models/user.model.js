@@ -5,6 +5,7 @@ const nominationSchema = new Schema({
   nominator: { type: String, required: true },
   nomination: { type: String, required: true },
   nominatorID: { type: String, required: true },
+  nominationType: { type: String, required: true },
 });
 
 const userSchema = new Schema({
@@ -20,6 +21,7 @@ const userSchema = new Schema({
   nominations: { type: [nominationSchema], required: true, default: [] },
   visionName: { type: String, default: "" },
   visionLink: { type: String, default: "" },
+  reflectionQuestionsLink: { type: String, default: "" },
   nominationLink: { type: String },
   program: { type: String, default: "" },
   year: { type: String, default: "First" },

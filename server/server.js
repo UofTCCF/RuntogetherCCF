@@ -20,7 +20,7 @@ const userRouter = require("./routes/users");
 
 app.use("/users", userRouter);
 
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("*", (req, res) => {
   const pageRoutes = ["/"];
@@ -28,7 +28,7 @@ app.get("*", (req, res) => {
     res.status(404);
   }
 
-  res.sendFile(path.join(__dirname, "client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 app.listen(port, () => {

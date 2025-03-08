@@ -7,6 +7,8 @@ import { errorToast } from "../actions/toastify";
 import { uploadNomination } from "../actions/updateUsers";
 import GoogleLoginButton from "../component/googleLogin/googleLogin";
 import ModuleWrapper from "../component/moduleWrapper/moduleWrapper";
+import { NOMINATION_TYPES } from "../constants";
+import LinkSection from "../component/linkSection/linkSection";
 
 class Nominations extends React.Component {
   constructor(props) {
@@ -28,15 +30,26 @@ class Nominations extends React.Component {
   }
 
   render() {
-    const handleSubmit = (nominationText) => {
+    const handleSubmit = (nominationText, nominationType, 
+        checked, secondingText) => {
       if (this.state.user.name === undefined) {
         errorToast("Please log in to submit a nomination");
       } 
       else if (this.state.user.id === this.state.nominee.id) {
         errorToast("You cannot nominate yourself");
       } 
+      else if (nominationType === 0) {
+        errorToast("Please select a nomination type")
+      }
+      else if (nominationType === 3 && checked === false) {
+        errorToast("You must check the box to submit")
+      }
       else {
-        uploadNomination(this.state.nominee, this.state.user, nominationText);
+        if (checked) {
+            nominationText = secondingText;
+        }
+        uploadNomination(this.state.nominee, this.state.user, 
+            nominationText, NOMINATION_TYPES[nominationType-1]);
         this.setState({ submitted: true });
       }
     };
@@ -52,7 +65,8 @@ class Nominations extends React.Component {
     }
 
     return (
-      <ModuleWrapper backgroundColor="primary.main">
+        <>
+        <ModuleWrapper backgroundColor="primary.main">
         <Typography
           variant="h2"
           color="textPrimary"
@@ -61,6 +75,11 @@ class Nominations extends React.Component {
         >
           Upload Nominations for {this.state.nominee.name}
         </Typography>
+        {this.state.user.name === undefined ? (
+          <GoogleLoginButton parent={this} />
+        ) : (
+          <></>
+        )}
         {this.state.submitted ? (
           <SubmittedNomination nominee={this.state.nominee} />
         ) : (
@@ -70,12 +89,9 @@ class Nominations extends React.Component {
             previousNomination={previousNomination}
           />
         )}
-        {this.state.user.name === undefined ? (
-          <GoogleLoginButton parent={this} />
-        ) : (
-          <></>
-        )}
         </ModuleWrapper>
+        <LinkSection />
+        </>
     );
   }
 }

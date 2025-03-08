@@ -100,10 +100,11 @@ router.route("/update/:id").post((req, res) => {
   const id = req.params.id;
   const visionName = req.body.visionName;
   const visionLink = req.body.visionLink;
+  const reflectionQuestionsLink = req.body.reflectionQuestionsLink;
   const positions = req.body.positions;
   const status = req.body.status;
 
-  updateVisionOrPosition(id, visionName, visionLink, positions, status)
+  updateVisionOrPosition(id, visionName, visionLink, reflectionQuestionsLink, positions, status)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");
@@ -142,8 +143,9 @@ router.route("/nomination/:id").post((req, res) => {
   const nomination = req.body.nomination;
   const nominator = req.body.nominator;
   const nominatorID = req.body.nominatorID;
+  const nominationType = req.body.nominationType;
 
-  updateNominations(id, nominator, nomination, nominatorID)
+  updateNominations(id, nominator, nomination, nominatorID, nominationType)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");

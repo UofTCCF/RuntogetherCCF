@@ -6,7 +6,7 @@ import PersonCard from "../personCard/personCard";
 import { STATUS } from "../../constants";
 import { capitalize } from "lodash";
 
-const PersonList = ({ title, positions, candidates }) => {
+const PersonList = ({ title, positions, candidates, fixedHeight }) => {
   const getColumnContents = () => {
     if (title === capitalize(STATUS.CONSIDERING)) {
       return Object.values(positions).map((pos) => (
@@ -45,7 +45,7 @@ const PersonList = ({ title, positions, candidates }) => {
         <Typography variant="h4" color="textPrimary" textAlign="center">
           {title}
         </Typography>
-        <Box key={title} marginBottom="0.8em" className="personListContent">
+        <Box key={title} marginBottom="0.8em" className={fixedHeight ? "personListContentScroll" : ""}>
           {getColumnContents()}
         </Box>
     </Box>

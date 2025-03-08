@@ -19,7 +19,7 @@
     display: block;
     width: 50%;
     height: 6px;
-    background-color: #C0C0C0;
+    background-color: #c0c0c0;
     margin: 0.2em 0 0.1em 0;
 }
 
@@ -28,8 +28,21 @@
 }
 
 @media screen and (max-width: 600px){
+    .logoTitle {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .logo {
+        width: 50px;  /* adjust as needed */
+        height: auto;
+        margin-right: 1em;
+    }
     .splashPage {
         padding: 1em;
+    }
+    .title::after {
+        background-color: #000000;
     }
 }
 
