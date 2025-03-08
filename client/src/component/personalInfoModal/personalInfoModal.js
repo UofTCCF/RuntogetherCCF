@@ -11,14 +11,12 @@ const PersonalInfoModal = ({
   churchYear,
   ccfYear,
   followingChristYear,
-  profilePic,
   setYearOfStudy,
   setProgramName,
   setChurchName,
   setChurchYear,
   setCcfYear,
   setFollowingChristYear,
-  setProfilePic,
 }) => {
   return (
     <>
@@ -203,41 +201,6 @@ const PersonalInfoModal = ({
                     val = 0;
                 }
                 setCcfYear(val);
-            }}
-        />
-      </Box>
-
-      <Box
-        display="flex"
-        flexWrap="wrap"
-        justifyContent="space-between"
-        marginBottom="1rem"
-      >
-        <Typography
-          variant="h3"
-          color="textPrimary"
-          fontWeight="600"
-          marginBottom="0.5rem"
-        >
-          Profile Picture
-        </Typography>
-        <TextField
-            variant="outlined"
-            color="secondary"
-            sx={{ width: "240px"  }}
-            size="small"
-            label="Years"
-            type="number"
-            inputProps={{min: 0, max: 100, inputMode: 'numeric', pattern: '[0-9]'}}
-            value={ccfYear}
-            onChange={(event) => {
-                var val = event.target.value;
-                if (val > 100) {
-                    val = 100;
-                } else if (val < 0) {
-                    val = 0;
-                }
-                setProfilePic(val);
             }}
         />
       </Box>

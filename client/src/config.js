@@ -1,8 +1,8 @@
 const port = 3000;
 
 const dev = {
-  port,
-  api_host: `http://localhost:${port}`,
+  client_host: `http://localhost:${port}`,
+  api_host: `http://localhost:4000`,
   google_client_id: "583586195557-he3bnhr51lmj6leqh31p16itneghf4bp.apps.googleusercontent.com",
 };
 
@@ -12,4 +12,4 @@ const prod = {
   google_client_id: "583586195557-he3bnhr51lmj6leqh31p16itneghf4bp.apps.googleusercontent.com",
 };
 
-module.exports = prod;
+module.exports = dev;

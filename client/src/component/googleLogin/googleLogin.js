@@ -14,6 +14,7 @@ const GoogleLoginButton = ({ parent }) => {
         //     useOneTap
         //   />
 
+        // TODO: revert to the above code once in production
         <GenericButton color="action" onClick={() => { adminLogin(parent) }}>
             <Typography variant="h4">Admin Login</Typography>
         </GenericButton>

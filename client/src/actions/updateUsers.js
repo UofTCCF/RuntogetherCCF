@@ -229,3 +229,80 @@ export const updateGeneralInfo = (
       console.log(err);
     });
 };
+
+export const uploadProfilePic = (user, profilePic) => {
+  if (profilePic === undefined || profilePic === null) {
+    errorToast("Please upload a picture or choose default picture");
+  }
+  console.log("profilePic: ", profilePic);
+  
+  const { blob, name } = profilePic;
+  
+  const url = `${API_HOST}/users/pictures/${user.id}`;
+
+  const formData = new FormData();
+  formData.append("image", blob, name);
+
+  const request = new Request(url, {
+    method: "post",
+    body: formData,
+    headers: {
+      Accept: "application/json, text/plain, */*",
+    },
+  });
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      } else {
+        return res.text();
+      }
+    })
+    .then((res) => {
+      if (typeof res === "object") {
+        return;
+      } else {
+        // errorToast(res);
+        return;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const updatePicChoice = (user, picChoice) => {
+  const url = `${API_HOST}/users/picChoice/${user.id}`;
+
+  const request = new Request(url, {
+    method: "post",
+    body: JSON.stringify({
+      picChoice: picChoice,
+    }),
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+    },
+  });
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      } else {
+        return res.text();
+      }
+    })
+    .then((res) => {
+      if (typeof res === "object") {
+        return;
+      } else {
+        errorToast(res);
+        return;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}

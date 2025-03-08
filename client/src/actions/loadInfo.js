@@ -74,6 +74,33 @@ export const getUser = (user, page) => {
     });
 };
 
+export const getProfilePic = (userID) => {
+  const url = `${API_HOST}/users/pictures/file/${userID}`;
+
+  return fetch(url)
+    .then((res) => {
+      if (res.ok) {
+        return res.blob();
+      } else {
+        return res.text();  // This returns error messages in text form
+      }
+    })
+    .then((blob) => {
+      // Check if the response is actually a Blob
+      if (blob instanceof Blob) {
+        const imageUrl = URL.createObjectURL(blob);
+        return imageUrl;
+      } else {
+        console.error(blob);
+        throw new Error("Failed to fetch image as Blob");
+      }
+    })
+    .catch((err) => {
+      console.error("Error fetching image:", err);
+      return null;
+    });
+}
+
 export const login = (user, page) => {
   const googleID = user.sub;
 
