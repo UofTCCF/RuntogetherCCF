@@ -9,12 +9,12 @@ export const getAllUsers = (page) => {
 
   const request = new Request(url, {
     method: "get",
+    mode: "cors",
     headers: {
       Accept: "application/json, text/plain, */*",
       "Content-Type": "application/json",
     },
   });
-
   fetch(request)
     .then((res) => {
       if (res.status === 200) {
@@ -26,6 +26,7 @@ export const getAllUsers = (page) => {
     .then((res) => {
       if (typeof res === "object") {
         page.setState({
+          loadingData: false,
           candidates: res,
         });
         return;

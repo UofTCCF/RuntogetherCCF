@@ -1,5 +1,6 @@
 import React from "react";
 
+import { errorToast } from "../actions/toastify";
 import WelcomeCard from "../component/welcomeCard/welcomeCard";
 import LinkSection from "../component/linkSection/linkSection";
 import ElectionSection from "../component/electionSection/electionSection";
@@ -10,19 +11,28 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+          loadingData: true,
           candidates: [],
           user: {},
         };
       }
-    
+
     componentDidMount() {
         getAllUsers(this);
+        setTimeout(() => {
+            if (this.state.loadingData){
+                errorToast("Server warming up, please wait a minute for data to be fetched.")
+            }
+        }, 1000)
     }
+
   render() {
     return (
       <>
         <WelcomeCard parent={this} user={this.state.user} />
-        <ElectionSection candidates={this.state.candidates} />
+        <ElectionSection 
+          candidates={this.state.candidates} 
+          loading={this.state.loadingData} />
         <LinkSection />
       </>
     );
