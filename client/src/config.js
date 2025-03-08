@@ -13,4 +13,4 @@ const prod = {
   google_client_id: "583586195557-he3bnhr51lmj6leqh31p16itneghf4bp.apps.googleusercontent.com",
 };
 
-module.exports = dev;
+module.exports = prod;
