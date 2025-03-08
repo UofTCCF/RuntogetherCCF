@@ -167,6 +167,11 @@ export const POSITION_REQUIREMENTS = {
   },
 };
 
+export const PIC_OPTS = {
+  DEFAULT_PICTURE: "DEFAULT PICTURE",
+  CUSTOM_PICTURE: "CUSTOM PICTURE",
+};
+
 export const LINKS = [
   {
     label: "Constitution",

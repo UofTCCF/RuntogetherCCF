@@ -29,6 +29,16 @@ const userSchema = new Schema({
   yearInChurch: { type: String, default: "1" },
   yearsFollowingChrist: { type: String, default: "1" },
   yearsInCCF: { type: String, default: "1" },
+  profilePic: {
+    type: mongoose.Schema.Types.ObjectId, // GridFS file ID
+    ref: 'profilePics.files', // Optional if you want to populate file data later
+    default: null
+  },
+  picChoice: {
+    type: String,
+    enum: ["DEFAULT PICTURE", "CUSTOM PICTURE"],
+    default: "DEFAULT PICTURE",
+  },
 });
 
 const User = mongoose.model("User", userSchema);

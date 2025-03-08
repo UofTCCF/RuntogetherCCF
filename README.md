@@ -1,6 +1,6 @@
 # RuntogetherCCF
 
-A website for memebers of UTCCF to go and vote for committee each year.
+A website for members of UTCCF to go and vote for committee each year.
 
 ## Check if node js is downloaded
 - run `npm -v` to see if npm is installed

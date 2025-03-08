@@ -1,8 +1,9 @@
 import { Box, Button, Typography } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { formatWithCommas } from "../../actions/helpers";
-import { STATUS } from "../../constants";
+import { PIC_OPTS, STATUS } from "../../constants";
 import CandidateFlyout from "../candidateFlyout/candidateFlyout";
+import { getProfilePic } from "../../actions/loadInfo";
 import "./personCard.css";
 
 const IMAGE_DIMENSIONS = "50px";
@@ -11,22 +12,32 @@ const DEFAULT_PROFILE_PIC = "profile.jpeg";
 const PersonCard = ({ person }) => {
   const [flyoutOpen, setFlyoutOpen] = useState(false);
   const [validPicture, setValidPicture] = useState(true);
+  const [customImgUrl, setCustomImgUrl] = useState(null);
 
   const handleImageError = () => {
     setValidPicture(false);
   }
 
   const {
+    id,
     name,
     visionName,
     visionLink,
     nominations,
     picture,
+    profilePic,
+    picChoice,
     positions,
     status,
   } = person;
   const hasVision = visionName.length > 0 && visionLink.length > 0;
   const hasNominators = nominations.length > 0;
+
+  useEffect(() => {
+    if (picChoice === PIC_OPTS.CUSTOM_PICTURE) {
+      getProfilePic(id).then((url) => setCustomImgUrl(url));; // Handle errors gracefully
+    }
+  }, [id, picChoice, profilePic]);
 
   return (
     <Box
@@ -53,10 +64,11 @@ const PersonCard = ({ person }) => {
           overflow="hidden"
           height={IMAGE_DIMENSIONS}
           minWidth={IMAGE_DIMENSIONS}
+          maxWidth={IMAGE_DIMENSIONS}
           margin="0.1em"
         >
           { validPicture ? <img
-            src={picture}
+            src={picChoice === PIC_OPTS.CUSTOM_PICTURE ? customImgUrl : picture}
             alt="profile pic"
             height="100%"
             //width="100%"
@@ -76,7 +88,7 @@ const PersonCard = ({ person }) => {
             <Typography variant="body2" color="textPrimary">
               Position(s): {formatWithCommas(positions)}
             </Typography>
-          ) : (
+            ) : (
             <>
               {" "}
               <Typography

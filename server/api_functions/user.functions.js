@@ -1,4 +1,6 @@
+const { get } = require("mongoose");
 const { User } = require("../models/user.model");
+const { mongoose } = require("../db/mongoose");
 
 const createUser = async (UserInfo) => {
   // Checks if a user exists already
@@ -128,6 +130,69 @@ const updateNominations = async (id, nominator, nomination, nominatorID, nominat
   return user;
 };
 
+const updateProfilePic = async (
+  userId,
+  profilePicId
+) => {
+  const user = await User.findOne({ id: userId });
+
+  // Checks if a user exists
+  if (user === null) {
+    throw "User not found";
+  }
+
+  console.log(`Updating profile picture for user ${userId} to ${profilePicId}`);
+
+  // Delete old profile picture if it exists
+  if (user.profilePic) {
+    try {
+      await mongoose.connection.db.collection('profilePics.files')
+        .deleteOne({ _id: new mongoose.Types.ObjectId(user.profilePic) });
+      await mongoose.connection.db.collection('profilePics.chunks')
+        .deleteMany({ files_id: new mongoose.Types.ObjectId(user.profilePic) });
+      console.log(`Deleted profile picture with ID: ${user.profilePic}`);
+    } catch (err) {
+      console.error('Error deleting profile picture: ', err);
+    }
+  }
+
+  // Set new profile picture obj id
+  user.profilePic = profilePicId;
+
+  await user.save();
+
+  return user;
+};
+
+const updatePicChoice = async (
+  userId,
+  picChoice
+) => {
+  const user = await User.findOne({ id:userId });
+
+  // Checks if a user exists
+  if (user === null) {
+    throw "User not found";
+  }
+
+  user.picChoice = picChoice;
+
+  await user.save();
+
+  return user;
+};
+
+const getProfilePicId = async (userId) => {
+  const user = await User.findOne({ id: userId });
+
+  // Checks if a user exists
+  if (user === null) {
+    throw "User not found";
+  }
+
+  return user.profilePic;
+}
+
 module.exports = {
   createUser,
   getAllUsers,
@@ -138,4 +203,7 @@ module.exports = {
   uploadNominationLink,
   updateNominations,
   updateGeneralInfo,
+  updateProfilePic,
+  updatePicChoice,
+  getProfilePicId,
 };

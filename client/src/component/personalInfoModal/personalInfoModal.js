@@ -204,6 +204,7 @@ const PersonalInfoModal = ({
             }}
         />
       </Box>
+      
       <Box
         alignSelf="flex-end"
         position="absolute"
