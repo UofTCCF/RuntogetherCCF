@@ -7,9 +7,8 @@ import { STATUS } from "../../constants";
 import ModuleWrapper from '../moduleWrapper/moduleWrapper';
 import {useMediaQuery} from "@mui/material";
 
-const ElectionSection = ({ candidates }) => {
+const ElectionSection = ({ candidates, loading }) => {
     const isThinScreen = useMediaQuery("(max-width: 450px)");
-    console.log(isThinScreen);
     return (
         <ModuleWrapper backgroundColor="secondary.main">
             <Typography variant="h2" color="textPrimary" textAlign="left">
@@ -25,18 +24,21 @@ const ElectionSection = ({ candidates }) => {
                 title={capitalize(STATUS.CONSIDERING)}
                 positions={CONSIDERING_POSITIONS}
                 candidates={candidates}
+                loading={loading}
                 fixedHeight={!isThinScreen}
                 />
                 <PersonList
                 title="Committee"
                 positions={COMMITTEE_POSITIONS}
                 candidates={candidates}
+                loading={loading}
                 fixedHeight={!isThinScreen}
                 />
                 <PersonList
                 title="IGs & Ministries"
                 positions={MINISTRY_POSITIONS}
                 candidates={candidates}
+                loading={loading}
                 fixedHeight={!isThinScreen}
                 />
             </Box>
