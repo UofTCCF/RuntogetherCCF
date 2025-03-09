@@ -21,7 +21,7 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
     person.yearsFollowingChrist
   );
   const [ccfYear, setCcfYear] = useState(person.yearsInCCF);
-  const [profilePic, setProfilePic] = useState(null);
+  const [profilePic, setProfilePic] = useState(person.profilePic);
   const [picChoice, setPicChoice] = useState(person.picChoice);
   const [page, setPage] = useState(0);
   const { name } = person;
@@ -49,8 +49,10 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
       }
     else if (page === 1) {
         if (picChoice === PIC_OPTS.CUSTOM_PICTURE) {
-          uploadProfilePic(person, profilePic);
-          // profilePic is: { blob, fileName}
+          let upload_res = uploadProfilePic(person, profilePic);
+          if (upload_res === -1) {
+            return;
+          }
         }
         updatePicChoice(person, picChoice);
         console.log("picChoice: ", picChoice);
