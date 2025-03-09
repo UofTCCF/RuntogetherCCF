@@ -1,6 +1,6 @@
 import { errorToast } from "./toastify";
 import ENV from "./../config";
-import { STATUS } from "../constants";
+import { PIC_OPTS, STATUS } from "../constants";
 import { getAllUsers } from "./loadInfo";
 
 const API_HOST = ENV.api_host;
@@ -238,13 +238,27 @@ export const updateGeneralInfo = (
 };
 
 export const uploadProfilePic = (user, profilePic) => {
-  if (profilePic === undefined || profilePic === null) {
-    errorToast("Please upload a picture or choose default picture");
-  }
-  console.log("profilePic: ", profilePic);
-  
   const { blob, name } = profilePic;
-  
+
+  if (blob === null || blob === undefined) {
+    // if user already has a custom profile picture
+    if (user.picChoice === PIC_OPTS.CUSTOM_PICTURE) {
+      return;
+    }
+    // if user does not already have a custom profile picture
+    errorToast("Please upload a picture or choose default picture");
+    return -1;
+  }
+
+  // Check file size (example: limit to 10MB)
+  const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+  if (blob.size > maxSize) {
+    errorToast("File size exceeds the 10 MB limit");
+    return -1;
+  }
+
+  console.log("profilePic: ", profilePic);
+
   const url = `${API_HOST}/users/pictures/${user.id}`;
 
   const formData = new FormData();
