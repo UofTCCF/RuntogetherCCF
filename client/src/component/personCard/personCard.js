@@ -66,18 +66,20 @@ const PersonCard = ({ person }) => {
           minWidth={IMAGE_DIMENSIONS}
           maxWidth={IMAGE_DIMENSIONS}
           margin="0.1em"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          bgcolor="lightgray"
         >
           { validPicture ? <img
             src={picChoice === PIC_OPTS.CUSTOM_PICTURE ? customImgUrl : picture}
             alt="profile pic"
             height="100%"
-            //width="100%"
             onError={handleImageError}
           /> : <img
             src={DEFAULT_PROFILE_PIC}
             alt="profile pic"
             height="100%"
-            //width="100%"
           />}
         </Box>
         <Box marginLeft="0.65em">
