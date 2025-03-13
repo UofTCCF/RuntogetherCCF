@@ -16,8 +16,8 @@ class Nominations extends React.Component {
     this.state = {
       submitted: false,
       nominee: {
-        name: "John Doe",
-        positions: ["Chair"],
+        name: "Loading please wait a minute",
+        positions: ["Loading please wait a minute"],
       },
       user: {},
     };
