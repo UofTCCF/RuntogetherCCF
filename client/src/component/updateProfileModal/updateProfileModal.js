@@ -107,10 +107,12 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
             position={position}
             visionLink={visionLink}
             visionName={visionName}
+            reflectionQuestionsLink={reflectionQuestionsLink}
             setStatus={setStatus}
             setPosition={setPosition}
             setVisionLink={setVisionLink}
             setVisionName={setVisionName}
+            setReflectionQuestionsLink={setReflectionQuestionsLink}
             handleBack={handleBackClick}
             handleSubmit={handleSubmit}
           />
