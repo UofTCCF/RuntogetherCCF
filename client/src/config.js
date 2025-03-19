@@ -14,4 +14,4 @@ const prod = {
   mode: "prod",
 };
 
-module.exports = prod;
+module.exports = dev;

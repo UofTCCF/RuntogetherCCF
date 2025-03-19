@@ -271,7 +271,7 @@ router.get("/pictures/file/:id", async (req, res) => {
 
     const userId = req.params.id;
     const fileId = await getProfilePicId(userId);
-    console.log("file id: " + fileId);
+    // console.log("file id: " + fileId);
 
     if (!fileId) {
       return res.status(404).json("Profile picture not found");

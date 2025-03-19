@@ -27,7 +27,7 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
   const { name } = person;
   const largeScreen = useMediaQuery(CCF_THEME.breakpoints.up("sm"));
   const responsiveWidth = largeScreen ? "500px" : "80%";
-  const responsiveHeight = largeScreen ? "500px" : "90%";
+  const responsiveHeight = largeScreen ? "550px" : "90%";
 
   const handleSubmit = () => {
     checkUserProfile(person, position, status, visionName, visionLink, reflectionQuestionsLink, parent);
@@ -107,10 +107,12 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
             position={position}
             visionLink={visionLink}
             visionName={visionName}
+            reflectionQuestionsLink={reflectionQuestionsLink}
             setStatus={setStatus}
             setPosition={setPosition}
             setVisionLink={setVisionLink}
             setVisionName={setVisionName}
+            setReflectionQuestionsLink={setReflectionQuestionsLink}
             handleBack={handleBackClick}
             handleSubmit={handleSubmit}
           />
