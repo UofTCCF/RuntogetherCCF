@@ -8,7 +8,9 @@ import { uploadNomination } from "../actions/updateUsers";
 import GoogleLoginButton from "../component/googleLogin/googleLogin";
 import ModuleWrapper from "../component/moduleWrapper/moduleWrapper";
 
+// Nomination component, responsible for handling nomination process
 class Nominations extends React.Component {
+  //Constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +29,9 @@ class Nominations extends React.Component {
     getUser(userID, this);
   }
 
+  // render method used to display component's JSX (UI)
   render() {
+    //Function to handle the submission of a nomination
     const handleSubmit = (nominationText) => {
       if (this.state.user.name === undefined) {
         errorToast("Please log in to submit a nomination");
@@ -41,7 +45,9 @@ class Nominations extends React.Component {
       }
     };
 
+    // Variable to hold any existing previous nominations
     let previousNomination = undefined;
+
     // Gets existing nominations
     if (this.state.user.name !== undefined) {
       this.state.nominee.nominations.forEach((nomination) => {

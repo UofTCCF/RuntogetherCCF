@@ -6,6 +6,7 @@ import SplashPage from "../component/splashPage/splashPage";
 import ModuleWrapper from "../component/moduleWrapper/moduleWrapper";
 import GenericButton from "../component/genericButton/genericButton";
 
+// Error Page
 const NoRoute = () => {
   return (
     <ThemeProvider theme={CCF_THEME}>

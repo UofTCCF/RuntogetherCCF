@@ -4,6 +4,7 @@ import { createUser } from "./updateUsers";
 
 const API_HOST = ENV.api_host;
 
+// Get all users from backend API
 export const getAllUsers = (page) => {
   const url = `${API_HOST}/users/`;
 
@@ -39,6 +40,7 @@ export const getAllUsers = (page) => {
     });
 };
 
+//Sets data for a specific use from the API based on their ID
 export const getUser = (user, page) => {
   const url = `${API_HOST}/users/user/${user}`;
 
@@ -74,6 +76,7 @@ export const getUser = (user, page) => {
     });
 };
 
+//Handles logging in a user
 export const login = (user, page) => {
   const googleID = user.sub;
 

@@ -8,6 +8,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import SplashPage from "../component/splashPage/splashPage";
 import ENV from "../config";
 
+// The layout of the page
 const Layout = () => {
   return (
     <GoogleOAuthProvider clientId={ENV.google_client_id}>
