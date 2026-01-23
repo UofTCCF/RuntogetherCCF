@@ -12,9 +12,9 @@ above to declare your intent. If you need to upload nominations for
 someone, please ask them to send you a “request nominations” link.
 `;
 export const NOT_LOGGED_IN_MESSAGE = "Please log in to Google.";
-export const ELECTIONS_HEADER_TEXT = "2025 - 2026 Leadership Elections";
+export const ELECTIONS_HEADER_TEXT = "2026 - 2027 Leadership Elections";
 export const NO_VISION = "No Vision Available";
-export const ELECTIONS_DEADLINE = "March 10th, 2025";
+export const ELECTIONS_DEADLINE = "February 27th, 2026";
 export const PROFILE_COMPLETE_MESSAGE = `Your profile is complete. No further actions are required at this time.`;
 export const NOMINATION_REQUEST_INSTRUCTIONS = `To request nominations, copy the link below and send it to your nominators.`;
 export const NOMINATION_LINK_ERROR = `No link found.`;
@@ -179,7 +179,7 @@ export const LINKS = [
   },
   {
     label: "Election's Handbook",
-    link: "https://docs.google.com/document/d/16mUQgnZFeMmN24hWPTiIs5JU71o6aMFmcOFCXdZJCTM/edit?tab=t.0#heading=h.vstb0vaz7x2q",
+    link: "https://docs.google.com/document/d/1b6NhD5US2fxmKTqp852tb1kVtMuFTXKM4jYQJcidjyw/edit?tab=t.0",
   },
   {
     label: "Past Visions",
