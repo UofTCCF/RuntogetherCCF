@@ -108,7 +108,12 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
             </>
         }
         {reflectionQuestionsLink && 
-            <GeneralLink label="Reflection Questions" link={reflectionQuestionsLink} size="h3" />
+            <>
+            <Typography variant="h3">
+                <strong>Reflection Questions:</strong>
+            </Typography>
+            <GeneralLink label="Link to questions" link={reflectionQuestionsLink} size="h3" />
+            </>
         }
         <Divider sx={{ bgcolor: "secondary.light", margin: "1em 0" }} />
         <Typography variant="h2" fontWeight="600" 

@@ -125,6 +125,14 @@ const ElectionInfoModal = ({
         value={visionLink}
         onChange={(event) => setVisionLink(event.target.value)}
       />
+      <Typography
+        variant="h3"
+        color="textPrimary"
+        fontWeight="600"
+        marginBottom="0.5rem"
+      >
+        Reflection Questions
+      </Typography>
       <TextField
         variant="outlined"
         color="secondary"
