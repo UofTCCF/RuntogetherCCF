@@ -175,7 +175,7 @@ export const PIC_OPTS = {
 export const LINKS = [
   {
     label: "Constitution",
-    link: "https://docs.google.com/document/d/1RYMSCOyMciT2TKG8CP0RZ9sSlWIhi8uZ4JVjH9LHI2E/edit?usp=sharing",
+    link: "https://www.utccf.com/docs/2024-25/visions/UTCCF-Constitution.pdf",
   },
   {
     label: "Election's Handbook",
