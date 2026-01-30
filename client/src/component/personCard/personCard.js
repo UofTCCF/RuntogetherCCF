@@ -23,6 +23,7 @@ const PersonCard = ({ person }) => {
     name,
     visionName,
     visionLink,
+    reflectionQuestionsLink,
     nominations,
     picture,
     profilePic,
@@ -99,6 +100,13 @@ const PersonCard = ({ person }) => {
                 marginBottom="0.4em"
               >
                 Vision: {hasVision && visionName}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="textPrimary"
+                marginBottom="0.4em"
+              >
+                Reflection Questions: {reflectionQuestionsLink && "Uploaded"}
               </Typography>
               <Typography variant="body2" color="textPrimary">
                 Nominations:{" "}

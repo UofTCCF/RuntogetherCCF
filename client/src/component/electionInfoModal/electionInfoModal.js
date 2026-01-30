@@ -126,7 +126,15 @@ const ElectionInfoModal = ({
         onChange={(event) => setVisionLink(event.target.value)}
       />
       {/* Reflection questions are not required to be submitted in the year 2025-2026 */}
-      {/* <TextField
+      {/*  <Typography
+        variant="h3"
+        color="textPrimary"
+        fontWeight="600"
+        marginBottom="0.5rem"
+      >
+        Reflection Questions
+      </Typography>
+      <TextField
         variant="outlined"
         color="secondary"
         sx={{
