@@ -204,7 +204,7 @@ export const LINKS = [
 export const NOMINATION_TYPES = [
     "External Nomination",
     "Internal Long Nomination",
-    "Internal Short Nomination"
+    // "Internal Short Nomination"
 ]
 
 export const NOMINATION_TYPES_DESCRIPTION = "Please refer to elections handbook to know what these nomination types are."
